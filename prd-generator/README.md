@@ -66,17 +66,17 @@ Claude Code loads project-level instructions from `CLAUDE.md` in your project ro
 **Step 1: Clone this repo**
 
 ```bash
-git clone [https://github.com/chenkk570/prd-generator-skills.git](https://github.com/chenkk570/my-claude-skill.git)
+git clone https://github.com/chenkk570/my-claude-skill.git
 ```
 
 **Step 2: Add the Skill to your project's CLAUDE.md**
 
 ```bash
 # Standard version
-cat my-claude-skill/prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
+cat prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
 
 # Iterative version
-cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
+cat prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
 ```
 
 If your project doesn't have a `CLAUDE.md` yet, copy directly:
