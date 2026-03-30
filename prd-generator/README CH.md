@@ -85,6 +85,10 @@ cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-proje
 cp my-claude-skill/prd-generator/prd-generator-skill.md your-project/CLAUDE.md
 ```
 
+```bash
+cp my-claude-skill/prd-generator/prd-generator-iterative-skill.md your-project/CLAUDE.md
+```
+
 **Step 3：在项目目录启动 Claude Code**
 
 ```bash
