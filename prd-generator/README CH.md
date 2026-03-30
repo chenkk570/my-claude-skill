@@ -66,17 +66,17 @@ Claude Code 通过项目根目录的 `CLAUDE.md` 文件加载上下文指令，S
 **Step 1：克隆本仓库**
 
 ```bash
-git clone [https://github.com/chenkk570/prd-generator-skills.git](https://github.com/chenkk570/my-claude-skill.git)
+git clone https://github.com/chenkk570/my-claude-skill.git
 ```
 
 **Step 2：将 Skill 写入项目的 CLAUDE.md**
 
 ```bash
 # 标准版
-cat my-claude-skill/prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
+cat prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
 
 # 渐进式
-cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
+cat prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
 ```
 
 项目中还没有 `CLAUDE.md` 则直接复制：
