@@ -68,23 +68,23 @@ Claude Code 通过项目根目录的 `CLAUDE.md` 文件加载上下文指令，S
 **Step 1：克隆本仓库**
 
 ```bash
-git clone https://github.com/chenkk570/prd-generator-skills.git
+git clone [https://github.com/chenkk570/prd-generator-skills.git](https://github.com/chenkk570/my-claude-skill.git)
 ```
 
 **Step 2：将 Skill 写入项目的 CLAUDE.md**
 
 ```bash
 # 标准版
-cat prd-generator-skills/prd-generator/SKILL.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
 
 # 渐进式
-cat prd-generator-skills/prd-generator-iterative/SKILL.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
 ```
 
 项目中还没有 `CLAUDE.md` 则直接复制：
 
 ```bash
-cp prd-generator-skills/prd-generator/SKILL.md your-project/CLAUDE.md
+cp my-claude-skill/prd-generator/prd-generator-skill.md your-project/CLAUDE.md
 ```
 
 **Step 3：在项目目录启动 Claude Code**
@@ -99,7 +99,7 @@ claude
 直接描述你的需求，Claude Code 会自动识别并按 Skill 流程执行：
 
 ```
-帮我写商品筛选功能的 PRD
+使用 prd-generator-iterative 帮我写商家入驻模块的 PRD
 ```
 
 > **提示**：`CLAUDE.md` 已有其他内容时，在文件末尾追加并用 `---` 分隔，避免干扰原有指令。两个 Skill 可同时写入同一个 `CLAUDE.md`，AI 会根据需求规模自动选择合适的版本。
@@ -112,7 +112,7 @@ claude
 
 **Step 2**：点击左侧 Project 名称旁的设置图标 → **「Project instructions」**
 
-**Step 3**：将 SKILL.md 的全部内容粘贴进去，保存
+**Step 3**：将 prd-generator-skill.md和prd-generator-iterative-skill.md 的全部内容粘贴进去，保存
 
 **Step 4**：在该 Project 的任意对话中，附上填好的输入表发送：
 
@@ -125,76 +125,6 @@ claude
 
 ---
 
-### Cursor
-
-Cursor 通过项目根目录的 `.cursor/rules/` 目录（或旧版 `.cursorrules` 文件）向 AI 注入指令。
-
-**使用 `.cursor/rules/`（推荐，Cursor 0.43+）**
-
-```bash
-mkdir -p your-project/.cursor/rules
-
-# 标准版
-cp prd-generator-skills/prd-generator/SKILL.md \
-   your-project/.cursor/rules/prd-generator.mdc
-
-# 渐进式
-cp prd-generator-skills/prd-generator-iterative/SKILL.md \
-   your-project/.cursor/rules/prd-generator-iterative.mdc
-```
-
-**使用旧版 `.cursorrules`**
-
-```bash
-cat prd-generator-skills/prd-generator/SKILL.md > your-project/.cursorrules
-```
-
-**在 Cursor Chat 中触发**
-
-```
-帮我写这个功能的 PRD：[功能描述]
-```
-
-> **注意**：`.cursorrules` 有内容长度限制。如果已有大量规则，只保留 SKILL.md 中 `## 工作流程` 之后的正文部分，删除顶部的 YAML frontmatter（`---` 包裹的部分）。
-
----
-
-### 其他支持 System Prompt 的平台
-
-适用于 OpenAI Playground、Coze、Dify、FastGPT、字节扣子、通义灵积等任何支持自定义系统提示的平台。
-
-**通用步骤**：
-
-1. 找到平台的「System Prompt / 系统提示 / 角色设定」输入框
-2. 将 SKILL.md 内容粘贴进去，去掉顶部 YAML frontmatter（删除 `---` 包裹的部分，从正文标题开始粘贴）
-3. 保存后，在对话框中粘贴填好的输入表并发送
-
-**需要删除的 frontmatter 示例**：
-
-```yaml
----                       ← 删除
-name: prd-generator       ← 删除
-description: ...          ← 删除
----                       ← 删除
-
-# PRD Generator Skill     ← 从这里开始粘贴
-```
-
----
-
-## 快速开始（通用三步）
-
-安装好 Skill 后，无论哪个平台，使用流程一致：
-
-```
-第一步  打开 templates/ 目录下对应的输入表
-
-第二步  填写必填项：功能名称、核心问题、用户角色、技术栈
-
-第三步  将填好的输入表发给 AI，说：「请基于以上信息生成 PRD」
-```
-
----
 
 ## 新版 PRD 的核心章节
 
