@@ -73,10 +73,10 @@ git clone https://github.com/chenkk570/my-claude-skill.git
 
 ```bash
 # 标准版
-cat prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
 
 # 渐进式
-cat prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
 ```
 
 项目中还没有 `CLAUDE.md` 则直接复制：
