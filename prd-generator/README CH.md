@@ -3,7 +3,7 @@
 > 面向 AI 时代的产品需求文档生成工具包
 > 让 AI 直接消费 PRD、生成可用代码，而不是「能跑但不能用」的代码。
 
-[English Version →](./README_EN.md)
+[English Version →](./README.md)
 
 ---
 
