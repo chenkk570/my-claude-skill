@@ -85,6 +85,10 @@ If your project doesn't have a `CLAUDE.md` yet, copy directly:
 cp my-claude-skill/prd-generator/prd-generator-skill.md your-project/CLAUDE.md
 ```
 
+```bash
+cp my-claude-skill/prd-generator/prd-generator-iterative-skill.md your-project/CLAUDE.md
+```
+
 **Step 3: Start Claude Code in your project**
 
 ```bash
