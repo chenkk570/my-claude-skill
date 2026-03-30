@@ -3,7 +3,7 @@
 > A toolkit for writing AI-executable Product Requirements Documents.
 > Give your PRD directly to AI and get production-ready code — not code that "runs but can't ship."
 
-[中文版 →](./README.md)
+[中文版 →](./README CH.md)
 
 ---
 
