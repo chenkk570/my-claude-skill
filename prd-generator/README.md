@@ -73,10 +73,10 @@ git clone https://github.com/chenkk570/my-claude-skill.git
 
 ```bash
 # Standard version
-cat prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
 
 # Iterative version
-cat prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
 ```
 
 If your project doesn't have a `CLAUDE.md` yet, copy directly:
