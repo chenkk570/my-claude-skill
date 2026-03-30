@@ -37,8 +37,7 @@ This project defines a standard for **executable specification documents** and p
 ├── templates/
 │   ├── PRD模板-新版（AI可执行规格）.md      # New PRD template (AI-executable)
 │   ├── PRD模板-旧版（面向程序员）.md        # Old PRD template (for comparison)
-│   ├── PRD生成-需求信息输入模板.md          # Input form for the standard Skill
-│   └── 大型模块PRD生成-需求信息输入表.md    # Input form for the iterative Skill
+│   └── PRD生成-需求信息输入模板.md          # Input form for the standard Skill
 │
 └── docs/
     └── PRD升级方法论-汇报文档.docx          # Full methodology deck (background, goals, value)
@@ -53,7 +52,6 @@ This project defines a standard for **executable specification documents** and p
 | **Best for** | Single features with clear scope | Large modules with multiple sub-features |
 | **How it works** | Collect info → confirm → generate in one pass | Decompose → confirm → generate per feature → confirm |
 | **PM involvement** | Fill in the form, wait for output | Confirm at each checkpoint before AI proceeds |
-| **Paired template** | `PRD生成-需求信息输入模板.md` | `大型模块PRD生成-需求信息输入表.md` |
 
 **Quick rule**: If you can describe the requirement clearly in 5 minutes, use the standard version. If you need to break down sub-features or aren't sure where the boundaries are, use the iterative version.
 
@@ -68,23 +66,23 @@ Claude Code loads project-level instructions from `CLAUDE.md` in your project ro
 **Step 1: Clone this repo**
 
 ```bash
-git clone https://github.com/your-username/prd-generator-skills.git
+git clone [https://github.com/chenkk570/prd-generator-skills.git](https://github.com/chenkk570/my-claude-skill.git)
 ```
 
 **Step 2: Add the Skill to your project's CLAUDE.md**
 
 ```bash
 # Standard version
-cat prd-generator-skills/prd-generator/SKILL.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-skill.md >> your-project/CLAUDE.md
 
 # Iterative version
-cat prd-generator-skills/prd-generator-iterative/SKILL.md >> your-project/CLAUDE.md
+cat my-claude-skill/prd-generator/prd-generator-iterative-skill.md >> your-project/CLAUDE.md
 ```
 
 If your project doesn't have a `CLAUDE.md` yet, copy directly:
 
 ```bash
-cp prd-generator-skills/prd-generator/SKILL.md your-project/CLAUDE.md
+cp my-claude-skill/prd-generator/prd-generator-skill.md your-project/CLAUDE.md
 ```
 
 **Step 3: Start Claude Code in your project**
@@ -99,7 +97,7 @@ claude
 Just describe your feature — Claude Code picks up the Skill automatically:
 
 ```
-Write a PRD for the user authentication module
+Use prd-generator-iterative to write a PRD for the user authentication module
 ```
 
 > **Tip**: If your `CLAUDE.md` already has content, append at the bottom and add a `---` separator to keep things clean. Both Skills can coexist in the same `CLAUDE.md` — the AI selects the appropriate one based on the scope of your request.
@@ -112,7 +110,7 @@ Write a PRD for the user authentication module
 
 **Step 2**: Click the settings icon next to the Project name → **"Project instructions"**
 
-**Step 3**: Paste the full contents of your chosen `SKILL.md` and save
+**Step 3**: Paste the full contents of your chosen `prd-generator-iterative-skill.md` and save
 
 **Step 4**: In any conversation within that Project, paste your filled-in input form and send:
 
@@ -122,81 +120,6 @@ Please generate a PRD based on the following information:
 ```
 
 > **Tip**: Create separate Projects for the standard and iterative Skills — Project instructions have a character limit, so keep them in separate Projects and switch as needed.
-
----
-
-### Cursor
-
-Cursor injects project-level instructions via `.cursor/rules/` (Cursor 0.43+) or the legacy `.cursorrules` file.
-
-**Using `.cursor/rules/` (recommended for Cursor 0.43+)**
-
-```bash
-mkdir -p your-project/.cursor/rules
-
-# Standard version
-cp prd-generator-skills/prd-generator/SKILL.md \
-   your-project/.cursor/rules/prd-generator.mdc
-
-# Iterative version
-cp prd-generator-skills/prd-generator-iterative/SKILL.md \
-   your-project/.cursor/rules/prd-generator-iterative.mdc
-```
-
-**Using the legacy `.cursorrules` file**
-
-```bash
-cat prd-generator-skills/prd-generator/SKILL.md > your-project/.cursorrules
-```
-
-**Trigger in Cursor Chat**
-
-```
-Write a PRD for this feature: [describe your feature]
-```
-
-> **Note**: `.cursorrules` has a content length limit. If you already have many rules, strip the YAML frontmatter (the `---` block at the top of the SKILL.md) and paste only the body starting from the first `#` heading.
-
----
-
-### Any Platform with System Prompt Support
-
-Works with OpenAI Playground, Coze, Dify, FastGPT, and any platform that accepts a custom system prompt.
-
-**Generic steps**:
-
-1. Find the "System Prompt" / "System Instructions" / "Character Setup" field
-2. Paste the SKILL.md content — **remove the YAML frontmatter** first (the block between the two `---` lines at the top)
-3. Save, then paste your completed input form into the conversation
-
-**What to remove** — delete these lines before pasting:
-
-```yaml
----                          ← remove this line
-name: prd-generator          ← remove this line
-description: ...             ← remove this line
----                          ← remove this line
-
-# PRD Generator Skill        ← start pasting from here
-```
-
----
-
-## Quick Start (3 Steps, Any Platform)
-
-Once the Skill is installed, the workflow is the same everywhere:
-
-```
-Step 1  Open the matching input form from templates/
-
-Step 2  Fill in the required fields:
-        feature name, core problem, user roles, tech stack
-
-Step 3  Send the completed form to the AI:
-        "Please generate a PRD based on the following information"
-```
-
-The AI follows the Skill's workflow automatically — no extra prompting needed.
 
 ---
 
